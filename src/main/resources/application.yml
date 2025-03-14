@@ -1,0 +1,35 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: camundaFirstApp
+  mail:
+    host: mosrepexc02.evropolis.ru
+    port: 993
+    username: DAIP_TEST
+    password: 7NaVePuN
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+  datasource:
+    url: jdbc:h2:mem:camunda
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+camunda:
+  bpm:
+    admin-user:
+      id: demo
+      password: demo
+      first-name: Demo
+      last-name: Demo
+      email: DAIP_TEST@absolutins.ru
