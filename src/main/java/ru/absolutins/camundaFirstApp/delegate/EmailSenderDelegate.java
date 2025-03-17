@@ -1,6 +1,6 @@
 package ru.absolutins.camundaFirstApp.delegate;
 
-import jakarta.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMessage;
 import java.util.Base64;
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;

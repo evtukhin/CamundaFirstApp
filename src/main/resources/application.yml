@@ -5,10 +5,14 @@ spring:
   application:
     name: camundaFirstApp
   mail:
-    host: mosrepexc02.evropolis.ru
-    port: 993
-    username: DAIP_TEST
-    password: 7NaVePuN
+    host: smtp.gmail.com
+    port: 587
+    username: ${SECRET_EMAIL_LOGIN}
+    password: ${SECRET_PASSWORD}
+#    host: mosrepexc02.evropolis.ru
+#    port: 993
+#    username: DAIP_TEST
+#    password: 7NaVePuN
     properties:
       mail:
         smtp:
@@ -17,13 +21,19 @@ spring:
             enable: true
 
   datasource:
-    url: jdbc:h2:mem:camunda
+    url: jdbc:h2:mem:camunda;MODE=MySQL
     driver-class-name: org.h2.Driver
     username: sa
     password:
   jpa:
-    hibernate:
-      ddl-auto: update
+    generate_ddl: true
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+#    hibernate:
+#      ddl-auto: update
 
 camunda:
   bpm:
@@ -33,3 +43,10 @@ camunda:
       first-name: Demo
       last-name: Demo
       email: DAIP_TEST@absolutins.ru
+
+logging:
+  level:
+    root: INFO
+    org:
+      springframework:
+        boot: DEBUG

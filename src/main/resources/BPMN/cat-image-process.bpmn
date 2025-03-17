@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0qt6vmk" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.33.1" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.22.0">
-  <bpmn:process id="Process_0wviuaf" isExecutable="true">
+  <bpmn:process id="CatImageProcess" isExecutable="true">
     <bpmn:startEvent id="StartEvent_1" name="Recieve email">
       <bpmn:documentation>Start process with email input</bpmn:documentation>
       <bpmn:outgoing>Flow_1mtsqtp</bpmn:outgoing>
@@ -56,7 +56,7 @@
     <bpmn:sequenceFlow id="Flow_1a878i9" sourceRef="ServiceTask_SendEmail" targetRef="EndEvent_1" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
-    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_0wviuaf">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="CatImageProcess">
       <bpmndi:BPMNShape id="StartEvent_1_di" bpmnElement="StartEvent_1">
         <dc:Bounds x="182" y="212" width="36" height="36" />
         <bpmndi:BPMNLabel>
@@ -99,6 +99,10 @@
         <di:waypoint x="218" y="230" />
         <di:waypoint x="330" y="230" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_12cqyv4_di" bpmnElement="Flow_12cqyv4">
+        <di:waypoint x="430" y="230" />
+        <di:waypoint x="545" y="230" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1j0blnt_di" bpmnElement="Flow_1j0blnt">
         <di:waypoint x="570" y="205" />
         <di:waypoint x="570" y="120" />
@@ -108,10 +112,6 @@
         <di:waypoint x="570" y="255" />
         <di:waypoint x="570" y="330" />
         <di:waypoint x="650" y="330" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_12cqyv4_di" bpmnElement="Flow_12cqyv4">
-        <di:waypoint x="430" y="230" />
-        <di:waypoint x="545" y="230" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_12nenru_di" bpmnElement="Flow_12nenru">
         <di:waypoint x="750" y="120" />

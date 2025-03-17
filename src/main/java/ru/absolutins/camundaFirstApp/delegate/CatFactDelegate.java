@@ -1,12 +1,11 @@
 package ru.absolutins.camundaFirstApp.delegate;
 
 import java.util.Objects;
-import lombok.Getter;
-import lombok.Setter;
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
+import ru.absolutins.camundaFirstApp.model.CatFactResponse;
 
 @Component("catFactFetcher")
 public class CatFactDelegate implements JavaDelegate {
@@ -18,13 +17,5 @@ public class CatFactDelegate implements JavaDelegate {
 
     CatFactResponse response = restTemplate.getForObject(url, CatFactResponse.class);
     execution.setVariable("catFact", Objects.requireNonNull(response).getFact());
-  }
-
-  @Setter
-  @Getter
-  private static class CatFactResponse {
-
-    private String fact;
-
   }
 }

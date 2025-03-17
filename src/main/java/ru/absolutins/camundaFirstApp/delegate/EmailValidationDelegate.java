@@ -11,6 +11,10 @@ public class EmailValidationDelegate implements JavaDelegate {
 
   private static final Pattern EMAIL_REGEX = Pattern.compile("^[A-Za-z0-9+_.-]+@(.+)$");
 
+  public EmailValidationDelegate() {
+    System.out.println("Bean EmailValidationDelegate class was created!");
+  }
+
   @Override
   public void execute(DelegateExecution execution) throws Exception {
     String email = (String) execution.getVariable("email");
