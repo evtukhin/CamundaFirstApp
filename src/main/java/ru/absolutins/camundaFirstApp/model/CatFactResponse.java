@@ -3,13 +3,13 @@ package ru.absolutins.camundaFirstApp.model;
 
 public class CatFactResponse {
 
-  private String fact;
+    private String fact;
 
-  public String getFact() {
-    return fact;
-  }
+    public String getFact() {
+        return fact;
+    }
 
-  public void setFact(String fact) {
-    this.fact = fact;
-  }
+    public void setFact(String fact) {
+        this.fact = fact;
+    }
 }

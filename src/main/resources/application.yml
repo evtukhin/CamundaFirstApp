@@ -5,20 +5,18 @@ spring:
   application:
     name: camundaFirstApp
   mail:
-    host: smtp.gmail.com
-    port: 587
+    host: smtp.yandex.ru
+    port: 465
     username: ${SECRET_EMAIL_LOGIN}
     password: ${SECRET_PASSWORD}
-#    host: mosrepexc02.evropolis.ru
-#    port: 993
-#    username: DAIP_TEST
-#    password: 7NaVePuN
     properties:
       mail:
         smtp:
           auth: true
-          starttls:
+          ssl:
             enable: true
+  #          starttls:
+  #            enable: true
 
   datasource:
     url: jdbc:h2:mem:camunda;MODE=MySQL
@@ -37,6 +35,11 @@ spring:
 
 camunda:
   bpm:
+    job-execution:
+      enabled: true
+    auto-deployment-enabled: true
+    application:
+      scan-for-process-definitions: true
     admin-user:
       id: demo
       password: demo
@@ -49,4 +52,4 @@ logging:
     root: INFO
     org:
       springframework:
-        boot: DEBUG
+        boot: INFO

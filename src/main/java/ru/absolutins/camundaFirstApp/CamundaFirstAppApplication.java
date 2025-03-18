@@ -8,8 +8,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @EnableProcessApplication
 public class CamundaFirstAppApplication {
 
-  public static void main(String[] args) {
-    SpringApplication.run(CamundaFirstAppApplication.class, args);
-  }
+    public static void main(String[] args) {
+        SpringApplication.run(CamundaFirstAppApplication.class, args);
+    }
 
 }

@@ -6,7 +6,7 @@
       <bpmn:outgoing>Flow_1mtsqtp</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="Flow_1mtsqtp" sourceRef="StartEvent_1" targetRef="ServiceTask_ValidateEmail" />
-    <bpmn:serviceTask id="ServiceTask_ValidateEmail" name="Validate email" camunda:delegateExpression="emailValidator">
+    <bpmn:serviceTask id="ServiceTask_ValidateEmail" name="Validate email" camunda:class="ru.absolutins.camundaFirstApp.delegate.EmailValidationDelegate">
       <bpmn:documentation>Check if email is valid</bpmn:documentation>
       <bpmn:incoming>Flow_1mtsqtp</bpmn:incoming>
       <bpmn:outgoing>Flow_12cqyv4</bpmn:outgoing>
@@ -20,13 +20,13 @@
     <bpmn:sequenceFlow id="Flow_1j0blnt" sourceRef="Gateway_14jjk2w" targetRef="ServiceTask_GetCatFact" />
     <bpmn:sequenceFlow id="Flow_0057ix7" sourceRef="Gateway_14jjk2w" targetRef="ServiceTask_GetCatImage" />
     <bpmn:sequenceFlow id="Flow_12cqyv4" sourceRef="ServiceTask_ValidateEmail" targetRef="Gateway_14jjk2w" />
-    <bpmn:serviceTask id="ServiceTask_GetCatFact" name="Get cat fact" camunda:delegateExpression="catFactFetcher">
+    <bpmn:serviceTask id="ServiceTask_GetCatFact" name="Get cat fact" camunda:class="ru.absolutins.camundaFirstApp.delegate.CatFactDelegate">
       <bpmn:documentation>Fetch random fact about cats</bpmn:documentation>
       <bpmn:extensionElements />
       <bpmn:incoming>Flow_1j0blnt</bpmn:incoming>
       <bpmn:outgoing>Flow_12nenru</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:serviceTask id="ServiceTask_GetCatImage" name="Get cat image" camunda:delegateExpression="catImageFetcher">
+    <bpmn:serviceTask id="ServiceTask_GetCatImage" name="Get cat image" camunda:class="ru.absolutins.camundaFirstApp.delegate.CatImageDelegate">
       <bpmn:documentation>Fetch random cat image</bpmn:documentation>
       <bpmn:incoming>Flow_0057ix7</bpmn:incoming>
       <bpmn:outgoing>Flow_1264ry6</bpmn:outgoing>
@@ -39,13 +39,13 @@
     <bpmn:sequenceFlow id="Flow_12nenru" sourceRef="ServiceTask_GetCatFact" targetRef="Gateway_0e826mr" />
     <bpmn:sequenceFlow id="Flow_1264ry6" sourceRef="ServiceTask_GetCatImage" targetRef="Gateway_0e826mr" />
     <bpmn:sequenceFlow id="Flow_19swzl0" sourceRef="Gateway_0e826mr" targetRef="ServiceTask_ProcessImage" />
-    <bpmn:serviceTask id="ServiceTask_ProcessImage" name="Process image" camunda:delegateExpression="imageProcessor">
+    <bpmn:serviceTask id="ServiceTask_ProcessImage" name="Process image" camunda:class="ru.absolutins.camundaFirstApp.delegate.ImageProcessingDelegate">
       <bpmn:documentation>Overlay text on image</bpmn:documentation>
       <bpmn:incoming>Flow_19swzl0</bpmn:incoming>
       <bpmn:outgoing>Flow_1kfe390</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:sequenceFlow id="Flow_1kfe390" sourceRef="ServiceTask_ProcessImage" targetRef="ServiceTask_SendEmail" />
-    <bpmn:serviceTask id="ServiceTask_SendEmail" name="Send email" camunda:delegateExpression="emailSender">
+    <bpmn:serviceTask id="ServiceTask_SendEmail" name="Send email" camunda:class="ru.absolutins.camundaFirstApp.delegate.EmailSenderDelegate">
       <bpmn:documentation>Send processed image via email</bpmn:documentation>
       <bpmn:incoming>Flow_1kfe390</bpmn:incoming>
       <bpmn:outgoing>Flow_1a878i9</bpmn:outgoing>
@@ -78,6 +78,9 @@
         <dc:Bounds x="650" y="290" width="100" height="80" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0e826mr_di" bpmnElement="Gateway_0e826mr">
+        <dc:Bounds x="805" y="205" width="50" height="50" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1kak11s_di" bpmnElement="ServiceTask_ProcessImage">
         <dc:Bounds x="960" y="190" width="100" height="80" />
         <bpmndi:BPMNLabel />
@@ -92,16 +95,9 @@
           <dc:Bounds x="1338" y="255" width="51" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_0e826mr_di" bpmnElement="Gateway_0e826mr">
-        <dc:Bounds x="805" y="205" width="50" height="50" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1mtsqtp_di" bpmnElement="Flow_1mtsqtp">
         <di:waypoint x="218" y="230" />
         <di:waypoint x="330" y="230" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_12cqyv4_di" bpmnElement="Flow_12cqyv4">
-        <di:waypoint x="430" y="230" />
-        <di:waypoint x="545" y="230" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1j0blnt_di" bpmnElement="Flow_1j0blnt">
         <di:waypoint x="570" y="205" />
@@ -112,6 +108,10 @@
         <di:waypoint x="570" y="255" />
         <di:waypoint x="570" y="330" />
         <di:waypoint x="650" y="330" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_12cqyv4_di" bpmnElement="Flow_12cqyv4">
+        <di:waypoint x="430" y="230" />
+        <di:waypoint x="545" y="230" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_12nenru_di" bpmnElement="Flow_12nenru">
         <di:waypoint x="750" y="120" />
