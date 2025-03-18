@@ -29,7 +29,7 @@ public class EmailSenderDelegate implements JavaDelegate {
         MimeMessageHelper helper = new MimeMessageHelper(message, true);
 
         helper.setTo(to);
-        helper.setFrom("DAIP_TEST@absolutins.ru", "Cat Customizer");
+        helper.setFrom("dima.irqtsk@yandex.ru", "Cat Customizer");
         helper.setSubject("Your Cat Image with Fun Fact!");
         helper.setText("Here's your customized cat image, enjoy!");
 
